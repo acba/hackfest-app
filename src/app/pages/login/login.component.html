@@ -1,0 +1,38 @@
+<div class="app flex-row align-items-center">
+<div class="container">
+  <div class="row ">
+    <div class="col-md-6 offset-md-3">
+      <div class="card card-container">
+
+        <img src="assets/img/logo-hackfest.png" alt="p">
+
+        <div class="card-block">
+          <form #loginForm="ngForm" (ngSubmit)="onLoginSubmit(loginForm.value)">
+
+            <div class="input-group mb-3">
+              <span class="input-group-addon"><i class="fa fa-user-o" aria-hidden="true"></i></span>
+              <input type="text" class="form-control" placeholder="Login" name="login" ngModel required>
+            </div>
+
+            <div class="input-group mb-4">
+              <span class="input-group-addon"><i class="fa fa-lock" aria-hidden="true"></i></span>
+              <input type="password" class="form-control" placeholder="Senha" name="senha" ngModel required>
+            </div>
+
+            <div class="row">
+              <div class="col-6">
+                <button type="submit" class="btn btn-primary px-4">Login</button>
+              </div>
+              <div class="col-6 text-right">
+                <a href="#" class="btn btn-link px-0" [routerLink]="['/cadastro']">Solicitar acesso</a>
+              </div>
+            </div>
+
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- <alert *ngIf="errorMessage" type="danger">{{ errorMessage }}</alert> -->
+  </div>
+</div>
+</div>
