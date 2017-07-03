@@ -21,6 +21,9 @@ export class LoginComponent implements OnInit {
   }
 
   onLoginSubmit(credentials) {
+    credentials.login = credentials.login.replace(/[^0-9]/g, '');
+    credentials.senha = credentials.senha.replace(/[^0-9]/g, '');
+
     this.auth.login(credentials)
       .map(res => res.json())
       .subscribe(
