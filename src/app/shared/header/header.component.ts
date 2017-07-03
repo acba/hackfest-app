@@ -10,12 +10,14 @@ export class HeaderComponent implements OnInit {
 
   nome: string;
 
-  constructor(private auth: AuthService) {
-   }
+  constructor(private auth: AuthService) {}
 
   ngOnInit() {
     //this.nome = "admin";
     this.nome = this.auth.getNome().split(" ")[0];
   }
 
+  onLogout(){
+    this.auth.logout()
+  }
 }
