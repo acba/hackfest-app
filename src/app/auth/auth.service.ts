@@ -16,7 +16,7 @@ export class AuthService {
   }
 
   finishAuthentication(token): void {
-    localStorage.setItem('token', token);
+    localStorage.setItem('token', token);    
     this.router.navigate(['dashboard']);
   }
 
@@ -29,22 +29,18 @@ export class AuthService {
   }
 
   getNome(): string {
-    return jwtDecode(this.getToken()).user.nome;
+    return jwtDecode(this.getToken()).nome;
   }
 
-  getPerfil(): string {
-    return jwtDecode(this.getToken()).user.perfil;
+  getCertificados(): Array<string> {
+    return jwtDecode(this.getToken()).certificados;
   }
 
-  isAdmin(): boolean {
-    return jwtDecode(this.getToken()).user.admin === 'S';
+  getCPF(): string {
+    return jwtDecode(this.getToken()).cpf;
   }
-
+  
   getToken(): string {
     return localStorage.getItem('token');
-  }
-
-  getUseRole(): string {
-    return jwtDecode(this.getToken()).scope;
-  }
+  } 
 }

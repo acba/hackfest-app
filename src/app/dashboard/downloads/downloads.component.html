@@ -1,5 +1,39 @@
-<div class="row">
-  <div class="col-6">
-    <button type="submit" class="btn btn-primary px-4" (click)="onDownload()">Download file</button>
+<div class="pagina">
+
+  <div class="container">
+
+    <div class="row">
+      <h3>{{title}}</h3>
+    </div>
+
+    <br>
+    <br>
+    <br>
+
+    <ul class="list-group">
+      <li class="list-group-item" *ngFor="let certificado of certificados">
+        <div class="nomecertificado">{{nomeEventos[certificado]}}</div>
+        <button type="submit" class="btn btn-primary btn-sm px-4 pull-right" (click)="onDownload(certificado)">Download file</button>
+      </li>
+    </ul>
+
+    <br>
+    <br>
+    <br>
+
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="card card-danger">
+          <div class="card-header">Aviso</div>
+          <div class="card-block" align="justify">
+            Caso você tenha participado de algum evento o qual o certificado não esteja presente ou haja alguma informação errada no
+            seu certificado, entre em contato através do email
+            <strong>contato@hackfest.com.br</strong>.
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
+
 </div>

@@ -20,19 +20,21 @@
             </div>
 
             <div class="row">
-              <div class="col-6">
+              <div class="col-3"></div>
+              <div id="botao" class="col-6">
                 <button type="submit" class="btn btn-primary px-4">Login</button>
-              </div>
-              <div class="col-6 text-right">
-                <a href="#" class="btn btn-link px-0" [routerLink]="['/cadastro']">Solicitar acesso</a>
-              </div>
+              </div>              
             </div>
 
           </form>
         </div>
+        <div id="errorLogin" *ngIf="errorMessage" class="alert alert-danger" role="alert">
+          <p> {{ errorMessage }} </p>
+          <p>Caso seu login e senha estejam corretos, entrar em contato através do endereço contato@hackfest.com.br</p>
+        </div>
       </div>
     </div>
-    <!-- <alert *ngIf="errorMessage" type="danger">{{ errorMessage }}</alert> -->
+    
   </div>
 </div>
 </div>

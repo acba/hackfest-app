@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../auth/auth.service';
+import { Router } from '@angular/router';
+
 import 'rxjs/add/operator/map';
 
 @Component({
@@ -10,20 +12,20 @@ import 'rxjs/add/operator/map';
 export class LoginComponent implements OnInit {
 
   errorMessage: string;
-  constructor(private auth: AuthService) { }
+  constructor(private auth: AuthService, private router: Router) { }
 
   ngOnInit() {
+    if(this.auth.isAuthenticated()){
+      this.router.navigate(['dashboard']);
+    }
   }
 
   onLoginSubmit(credentials) {
-
     this.auth.login(credentials)
       .map(res => res.json())
       .subscribe(
-        response => this.auth.finishAuthentication(response.token),
-        error => {
-          this.errorMessage = error.json().error
-        }
+          response => this.auth.finishAuthentication(response.token),
+          error => this.errorMessage = error.json().message          
       );
   }
 
