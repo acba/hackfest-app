@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
   constructor(private auth: AuthService, private router: Router) { }
 
   ngOnInit() {
-    if(this.auth.isAuthenticated()){
+    if (this.auth.isAuthenticated()) {
       this.router.navigate(['dashboard']);
     }
   }
@@ -24,12 +24,16 @@ export class LoginComponent implements OnInit {
     credentials.login = credentials.login.replace(/[^0-9]/g, '');
     credentials.senha = credentials.senha.replace(/[^0-9]/g, '');
 
-    this.auth.login(credentials)
-      .map(res => res.json())
-      .subscribe(
+    if (credentials.login.length < 11) {
+      this.errorMessage = 'Insira ao menos 11 números!';
+    }else {
+      this.auth.login(credentials)
+        .map(res => res.json())
+        .subscribe(
           response => this.auth.finishAuthentication(response.token),
-          error => this.errorMessage = error.json().message          
+          error => this.errorMessage = error.json().message
       );
+    }
   }
 
 }

@@ -18,4 +18,5 @@ export const ROUTES: Routes = [
       { path: 'downloads', component: DownloadsComponent, data: { title: 'Downloads' }}
     ]
   },
+  { path: '**', redirectTo: 'login'}
 ];

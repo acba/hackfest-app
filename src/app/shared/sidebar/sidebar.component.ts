@@ -15,6 +15,6 @@ export class SidebarComponent implements OnInit {
   constructor(private auth: AuthService) { }
 
   ngOnInit() {
-    this.mensagem = (this.auth.getCertificados().length === 1) ? 'Download' : 'Downloads';
+    this.mensagem = (this.auth.getCertificados().length === 1) ? 'Certificado' : 'Certificados';
   }
 }
